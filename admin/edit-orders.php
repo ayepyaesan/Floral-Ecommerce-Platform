@@ -195,6 +195,7 @@ if (isset($_SESSION['username'])) {
     } elseif (isset($_POST['btn_view'])) {
       $id = $_POST['id'];
       $view = ordersInfoView($con, $id);
+      $receiverview=receiverInfoView($con,$id);
     ?>
       <div class="view-order">
         <div class="container">
@@ -230,6 +231,12 @@ if (isset($_SESSION['username'])) {
                 </li>
                 <li><strong>Phone :</strong>
                   <?php echo $view['phone_customer']; ?>
+                </li>
+                <li><strong>Receiver Name :</strong>
+                  <?php echo $receiverview['name_receiver']; ?>
+                </li>
+                <li><strong>Phone :</strong>
+                  <?php echo $receiverview['phone_receiver']; ?>
                 </li>
                  <li><strong>Delivery Address :</strong>
                   <?php echo $view['delivery_address']; ?>
@@ -285,8 +292,9 @@ if (isset($_SESSION['username'])) {
 <?php
     } elseif (isset($_POST['btn_delete'])) {
       $id = $_POST['id'];
-      $stmt = $con->prepare("DELETE FROM orders WHERE `orders`.`id` = ?");
+      $stmt = $con->prepare("DELETE receivers, orders FROM receivers JOIN orders ON orders.receiver_id = receivers.id WHERE orders.id = ?;");
       $stmt->execute([$id]);
+      
       show_message('Order deleted successfully', 'success');
       header('location: ' . $_SERVER['HTTP_REFERER']);
       exit();

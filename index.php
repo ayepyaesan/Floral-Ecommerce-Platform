@@ -16,7 +16,7 @@ $ListProducts = $stmt->fetchAll();
   <style>
     .card-img-top{
       width:100%;
-      height: 500px;
+      height: 300px;
       object-fit: cover;
     }
   </style>
@@ -24,10 +24,10 @@ $ListProducts = $stmt->fetchAll();
 <body>
   <div class="product-list my-3">
   <div class="container">
-    <h1><?php echo $lang['Available Products'] ?></h1>
+    <h3><?php echo $lang['Available Products'] ?></h3>
     <div class="row g-3">
       <?php foreach ($ListProducts as $product) : ?>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="card">
             <img class="card-img-top" src="<?php echo $dirs . $product['img_product'] ?>" alt="<?php echo $product['name_product'] ?>">
             <div class="card-body">

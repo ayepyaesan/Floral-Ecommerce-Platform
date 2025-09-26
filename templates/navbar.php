@@ -1,7 +1,8 @@
 <?php
 $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
-<nav class="navbar navbar-expand-lg bg-body-tertiary text-uppercase">
+<div class="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary text-uppercase">
   <div class="container m-3">
     <a class="navbar-brand h1" href="./index.php"><?php echo $lang['Romance in Blooms'] ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MyNavbar" aria-controls="MyNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,3 +67,4 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
     </div>
   </div>
 </nav>
+</div>

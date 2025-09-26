@@ -112,6 +112,14 @@ if ($do == 'cart') {
               <input type="email" name="email_customer" id="email_customer" class="form-control" required="required">
             </div>
             <div class="form-group">
+              <label for="name_receiver">Receiver Name *</label>
+              <input type="text" name="name_receiver" id="name_receiver" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+              <label for="phone_receiver">Receiver Phone *</label>
+              <input type="text" name="phone_receiver" id="phone_receiver" class="form-control" required="required">
+            </div>
+            <div class="form-group">
               <label for="delivery_address">Delivery Address *</label>
               <input type="text" name="delivery_address" id="delivery_address" class="form-control" required="required">
             </div>
@@ -187,16 +195,24 @@ if ($do == 'cart') {
     $name_customer = $_POST['name_customer'];
     $phone_customer = $_POST['phone_customer'];
     $email_customer = $_POST['email_customer'];
+    $name_receiver = $_POST['name_receiver'];
+    $phone_receiver = $_POST['phone_receiver'];
     $delivery_address = $_POST['delivery_address'];
     $delivery_datetime = $_POST['delivery_datetime'];
     $note_customer = $_POST['note_customer'];
+    $now=time();
+    $delivery_timestamp = strtotime($delivery_datetime);
 
     $orders_number = generateOrderNumber($con);
-    if (empty($name_customer) || empty($phone_customer) || empty($email_customer) || empty($delivery_address) || empty($delivery_datetime)) {
+    if (empty($name_customer) || empty($phone_customer) || empty($email_customer) || empty($name_receiver) || empty($phone_receiver) || empty($delivery_address) || empty($delivery_datetime)) {
       show_message('Please fill in all required fields.', 'danger');
       header('location: ' . $_SERVER['HTTP_REFERER']);
       exit();
-    } else {
+    } elseif ($delivery_timestamp < $now) {
+      show_message('Invalid time. Please choose a time in the future.', 'danger');
+      header('location: ' . $_SERVER['HTTP_REFERER']);
+      
+    }else {
       if (!empty($_FILES['fileUpload']['name'])) {
         $upload_dir = 'uploads/payments/';
         $file_ext = pathinfo($_FILES['fileUpload']['name'], PATHINFO_EXTENSION);
@@ -228,6 +244,10 @@ if ($do == 'cart') {
         $customers->execute([$name_customer, $email_customer, $phone_customer]);
         $customer_id = $con->lastInsertId();
         $_SESSION['customer_id'] = $customer_id;
+        $receivers = $con->prepare("INSERT INTO `receivers`(`name_receiver`, `phone_receiver`) VALUES (?, ?)");
+        $receivers->execute([$name_receiver, $phone_customer]);
+        $receiver_id = $con->lastInsertId();
+        $_SESSION['receiver_id'] = $receiver_id;
         foreach ($_SESSION['cart'] as $cartItems => $item) {
           $product_name = $item['product_name'];
           $product_quantity = $item['quantity'];
@@ -237,8 +257,8 @@ if ($do == 'cart') {
           $products->execute([$product_name]);
           $product=$products->fetch();
           $product_id=$product['id'];
-          $orders = $con->prepare("INSERT INTO `orders`(`orders_number`, `customer_id`,`product_id`, `product_name`, `product_quantity`, `product_price`, `subtotal`,`delivery_address`, `delivery_datetime` , `note_customer`,`upload_file`) VALUES (?, ?,?,?, ?, ?, ?, ?, ?, ?,?)");
-          $orders->execute([$orders_number, $customer_id,$product_id, $product_name, $product_quantity, $product_price, $subtotal,$delivery_address,$delivery_datetime, $note_customer, $img_payment]);
+          $orders = $con->prepare("INSERT INTO `orders`(`orders_number`, `customer_id`,`receiver_id`,`product_id`, `product_name`, `product_quantity`, `product_price`, `subtotal`,`delivery_address`, `delivery_datetime` , `note_customer`,`upload_file`) VALUES (?,?, ?,?,?, ?, ?, ?, ?, ?, ?,?)");
+          $orders->execute([$orders_number, $customer_id,$receiver_id,$product_id, $product_name, $product_quantity, $product_price, $subtotal,$delivery_address,$delivery_datetime, $note_customer, $img_payment]);
           $stockproducts= $con -> prepare( "UPDATE products SET stock_product = stock_product - ? WHERE name_product = ?");
           $stockproducts->execute([$product_quantity,$product_name]);
         }

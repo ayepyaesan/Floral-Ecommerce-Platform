@@ -312,7 +312,7 @@ include './init.php';
 <!-- Best Sellers Carousel -->
 <section id="best-sellers" class="bg-light py-5">
   <div class="container text-center">
-    <h2 class="mb-4">Best Seller Bouquets</h2>
+    <h2 class="mb-4">Florist's Picks</h2>
     <div id="bouquetCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 600px;">
       <div class="carousel-inner">
 

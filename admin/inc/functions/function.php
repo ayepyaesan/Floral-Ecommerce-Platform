@@ -57,7 +57,12 @@ function ordersInfoView($con, $id)
   $stmt->execute(array($id));
   return $stmt->fetch();
 }
-
+function receiverInfoView($con, $id)
+{
+  $stmt = $con->prepare("SELECT `receivers`.`name_receiver`, `receivers`.`phone_receiver` FROM `orders` JOIN `receivers` ON `orders`.`receiver_id` = `receivers`.`id` WHERE `orders`.`id` = ? LIMIT 1");
+  $stmt->execute(array($id));
+  return $stmt->fetch();
+}
 function getProductById($product_id)
 {
   global $con;
