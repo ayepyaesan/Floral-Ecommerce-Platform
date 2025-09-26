@@ -19,13 +19,13 @@ Welcome to **Romance in Blooms**, a simple flower shop e-commerce platform built
 Below are some screenshots of the website:
 
 - **Dashboard Page:**  
-  ![Dashboard Screenshot](path/to/dashboard-screenshot.jpg)
+  ![Dashboard Screenshot](image/dashboard.png)
 
 - **Home Page:**  
-  ![Home Page Screenshot](path/to/homepage-screenshot.jpg)
+  ![Home Page Screenshot](image/home.png)
 
 - **Shop Page:**  
-  ![Shop Page Screenshot](path/to/shop-screenshot.jpg)
+  ![Shop Page Screenshot](image/shop.png)
 
 Replace the image paths above with your actual screenshot file locations.
 
