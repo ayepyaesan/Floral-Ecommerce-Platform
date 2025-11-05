@@ -76,7 +76,7 @@ $tdyorders = $ListTdyOrders->fetchAll(PDO::FETCH_ASSOC);
           <p class="mb-0"><strong>Revenue:</strong> <?php echo $bestseller['price_product']*$bestseller['total_quantity_sold']?>MMK</p>
         </div>
         <div class="card-footer bg-transparent border-0">
-          <a href="/admin/products/1" class="btn btn-sm btn-outline-success w-100">View Product</a>
+          <a href="../product.php?id=<?php echo $bestseller['id']?>" class="btn btn-sm btn-outline-success w-100">View Product</a>
         </div>
       </div>
   </div>

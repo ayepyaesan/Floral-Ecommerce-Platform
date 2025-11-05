@@ -2,9 +2,10 @@
 session_start();
 $pageTitle = 'Tracking';
 include './init.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['your_order'])) {
   $orders_number = $_POST['orders_number'];
-  $stmt = $con->prepare("SELECT `id`, `orders_number`, `customer_id`, `product_name`, `product_quantity`, `product_price`, `currency`, `subtotal`, `note_customer`, `order_date`, `order_status` FROM `orders` WHERE `orders_number` = ?");
+  $stmt = $con->prepare("SELECT `id`, `orders_number`, `customer_id`, `product_name`, `product_quantity`, `product_price`, `subtotal`, `note_customer`, `order_date`, `order_status` FROM `orders` WHERE `orders_number` = ?");
   $stmt->execute([$orders_number]);
   $Orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -24,6 +24,7 @@ include './init.php';
     #welcome .container{
       margin-bottom:80px;
     }
+  
     .service-img{
       width:100%;
       height:500px;
@@ -75,6 +76,7 @@ include './init.php';
       width: 100%;
       height: 300px;
     }
+
    </style>
 </head>
 <body>
@@ -84,6 +86,47 @@ include './init.php';
     <h1 class="display-4">Welcome to Romance in Blooms </h1>
     <p class="lead">Let's make your favorite person happy with us!! 🌸</p>
     <a href="index.php" class="btn btn-primary mt-3">Shop Best Sellers</a>
+  </div>
+</section>
+
+
+<!-- Trendy Bouquet Banner Section -->
+<section class="py-5 text-center bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Banner Text + Form -->
+      <div class="col-md-6 text-md-start">
+        <h2 class="fw-bold text-danger mb-3">Mixed flower Collection</h2>
+        <p class="text-muted mb-4">
+          Discover our trending mixed flower bouquets — romantic, elegant, and perfect for any occasion.
+        </p>
+
+        <!-- Styled Form Redirecting to search.php -->
+        <form class="d-flex btn-search" role="search" action="search.php" method="GET">
+          <div class="input-group">
+            <!-- Hidden pre-filled search query -->
+            <input 
+              type="hidden" 
+              name="q" 
+              value="mixed"
+            >
+            
+            <!-- Optional visible button (styled like your search bar) -->
+            <button 
+              class="btn btn-outline-danger px-4 py-2 rounded-pill" 
+              type="submit"
+            >
+              Check This Out →
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- Banner Image -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="assets/img/mixflower.jpeg" class="img-fluid rounded shadow" alt="Red Collection">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -441,14 +484,14 @@ include './init.php';
     <p class="mb-4">Follow us on social media for updates, discounts, and floral inspiration 🌼</p>
     
     <div class="d-flex justify-content-center gap-4">
-      <a href="https://facebook.com/yourpage" target="_blank" class="text-decoration-none text-primary fs-3">
+      <a href="https://www.facebook.com/share/1PbRztHi2L/?mibextid=wwXIfr" target="_blank" class="text-decoration-none text-primary fs-3">
         <i class="fa-brands fa-facebook"></i>
       </a>
-      <a href="https://instagram.com/yourpage" target="_blank" class="text-decoration-none text-danger fs-3">
+      <a href="https://www.instagram.com/romance_in_blooms?igsh=czI0NXR1dnJubXVm" target="_blank" class="text-decoration-none text-danger fs-3">
         <i class="fa-brands fa-instagram"></i>
       </a>
-      <a href="https://wa.me/yourphonenumber" target="_blank" class="text-decoration-none text-success fs-3">
-        <i class="fa-brands fa-whatsapp"></i>
+      <a href="https://www.tiktok.com/@r.in.b2020?_t=ZS-90IBmq5ku1A&_r=1" target="_blank" class="text-decoration-none text-success fs-3">
+        <i class="fa-brands fa-tiktok"></i>
       </a>
       <a href="mailto:info@romanceinblooms.com" class="text-decoration-none text-secondary fs-3">
         <i class="fa-solid fa-envelope"></i>

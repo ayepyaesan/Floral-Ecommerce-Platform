@@ -101,39 +101,39 @@ if ($do == 'cart') {
             ?>
             <div class="form-group">
               <label for="name_customer">Full Name *</label>
-              <input type="text" name="name_customer" id="name_customer" class="form-control" required="required">
+              <input type="text" name="name_customer" id="name_customer" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
               <label for="phone_customer">Phone *</label>
-              <input type="tel" name="phone_customer" id="phone_customer" class="form-control" required="required">
+              <input type="tel" name="phone_customer" id="phone_customer" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
               <label for="email_customer">Email Address *</label>
-              <input type="email" name="email_customer" id="email_customer" class="form-control" required="required">
+              <input type="email" name="email_customer" id="email_customer" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
               <label for="name_receiver">Receiver Name *</label>
-              <input type="text" name="name_receiver" id="name_receiver" class="form-control" required="required">
+              <input type="text" name="name_receiver" id="name_receiver" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
               <label for="phone_receiver">Receiver Phone *</label>
-              <input type="text" name="phone_receiver" id="phone_receiver" class="form-control" required="required">
+              <input type="text" name="phone_receiver" id="phone_receiver" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
               <label for="delivery_address">Delivery Address *</label>
-              <input type="text" name="delivery_address" id="delivery_address" class="form-control" required="required">
+              <input type="text" name="delivery_address" id="delivery_address" class="form-control my-2" required="required">
             </div>
             <div class="form-group">
             <label for="delivery_datetime">Delivery Date & Time *</label>
-            <input type="datetime-local" name="delivery_datetime" id="delivery_datetime" class="form-control" required>
+            <input type="datetime-local" name="delivery_datetime" id="delivery_datetime" class="form-control my-2" required>
             </div>
             <div class="form-group">
               <label for="note_customer">Additional Information</label>
-              <textarea name="note_customer" id="note_customer" class="form-control" rows="3"></textarea>
+              <textarea name="note_customer" id="note_customer" class="form-control my-2" rows="3"></textarea>
             </div>
             <div class="form-group">
-              <label for="fileUpload">KBZPay Screenshot</label>
-              <input type="file" class="form-control" id="fileUpload" name="fileUpload">
+              <label for="fileUpload">MMQR Screenshot</label>
+              <input type="file" class="form-control my-2" id="fileUpload" name="fileUpload">
             </div>
           </div>
           <div class="col-md-6">
@@ -180,8 +180,23 @@ if ($do == 'cart') {
                 </tfoot>
               </table>
             </div>
-            <button type="submit" name="place_order" class="btn btn-primary"><i
+            <button type="submit" name="place_order" class="btn btn-primary mb-3"><i
                 class="fa-solid fa-check-double"></i>&nbsp;Place Order</button>
+             <div class="card text-center shadow-lg border-0 rounded-3">
+            <div class="card-body">
+            <h5 class="card-title mb-3">Scan the MMQR Code</h5>
+          
+            <!-- QR Code Image -->
+            <div class="mb-3">
+              <img src="uploads/mmqr.png" 
+                 alt="QR Code" class="img-fluid rounded">
+            </div>
+
+            <!-- Information -->
+            <p class="card-text">Use your phone to scan this QR code and make the online payment.</p>
+            <span class="text-danger">Don't forget to put the screenshot file!!</span>
+        </div>
+      </div>
           </div>
         </div>
       </form>

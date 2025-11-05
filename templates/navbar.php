@@ -35,34 +35,6 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
             <i class="fas fa-user mx-3"></i>Login as Admin
           </a>
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" aria-label="Language" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php if ($selectedLanguage === 'en') {
-              echo '<span class="fi fi-gb"></span>';
-            } else {
-              echo '<span class="fi fi-ma"></span>';
-            }
-            ?>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <input type="hidden" name="language" value="en">
-                <button class="dropdown-item" type="submit">
-                  <span class="fi fi-gb"></span>&nbsp;<?php echo $lang['English'] ?>
-                </button>
-              </form>
-            </li>
-            <li>
-              <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <input type="hidden" name="language" value="ar">
-                <button class="dropdown-item" type="submit">
-                  <span class="fi fi-ma"></span>&nbsp;<?php echo $lang['Arabic'] ?>
-                </button>
-              </form>
-            </li>
-          </ul>
-        </li> -->
       </ul>
     </div>
   </div>

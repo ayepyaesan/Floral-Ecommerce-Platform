@@ -4,7 +4,7 @@ $pageTitle = 'Orders';
 include './init.php';
 if (isset($_SESSION['username'])) {
   $do = isset($_GET['do']) ? $_GET['do'] : 'dashboard';
-  $ListOrders = $con->prepare("SELECT `orders`.`id`, `orders`.`orders_number`, `orders`.`customer_id`, `orders`.`product_name`, `orders`.`product_quantity`, `orders`.`product_price`, `orders`.`subtotal`, `orders`.`note_customer`, `orders`.`order_date`, `orders`.`order_status`, `customers`.`name_customer`, `customers`.`email_customer`, `customers`.`phone_customer` FROM `orders` INNER JOIN `customers` ON `orders`.`customer_id` = `customers`.`id` ORDER BY `orders`.`order_date` DESC");
+  $ListOrders = $con->prepare("SELECT `orders`.`id`, `orders`.`orders_number`, `orders`.`customer_id`, `orders`.`product_name`, `orders`.`product_quantity`, `orders`.`product_price`, `orders`.`subtotal`, `orders`.`note_customer`, `orders`.`order_date`, `orders`.`delivery_datetime`,`orders`.`order_status`, `customers`.`name_customer`, `customers`.`email_customer`, `customers`.`phone_customer` FROM `orders` INNER JOIN `customers` ON `orders`.`customer_id` = `customers`.`id` ORDER BY `orders`.`order_date` DESC");
   $ListOrders->execute();
   $Orders = $ListOrders->fetchAll(PDO::FETCH_ASSOC);
   if ($do == 'dashboard') {
@@ -43,7 +43,7 @@ if (isset($_SESSION['username'])) {
                     <?php echo $order['subtotal'] ?>
                   </td>
                   <td>
-                    <?php echo $order['order_date'] ?>
+                    <?php echo $order['delivery_datetime'] ?>
                   </td>
                   <td>
                     <?php echo $order['order_status'] ?>
